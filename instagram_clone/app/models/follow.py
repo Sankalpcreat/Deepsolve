@@ -12,7 +12,7 @@ class Follow(Base):
     followed_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     followed_on = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
 
-    # Relationships
+    
     follower = relationship("User", foreign_keys=[follower_id], backref="following")
     followed = relationship("User", foreign_keys=[followed_id], backref="followers")
 
