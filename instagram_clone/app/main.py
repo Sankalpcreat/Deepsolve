@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.routers import auth, users, post, comments
 
 app = FastAPI(
     title="Instagram Clone API",
@@ -22,7 +23,7 @@ app.add_middleware(
 
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
 app.include_router(users.router, prefix="/users", tags=["users"])
-app.include_router(posts.router, prefix="/posts", tags=["posts"])
+app.include_router(post.router, prefix="/posts", tags=["posts"])
 app.include_router(comments.router, prefix="/comments", tags=["comments"])
 
 @app.get("/")
